@@ -1,6 +1,6 @@
-import { createStore, combineReducers, compose, applyMiddleware} from 'redux'
+import { createStore, compose, applyMiddleware} from 'redux'
 import { hashHistory } from 'react-router'
-import { routerMiddleware, routerReducer } from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux'
 import ThunkMiddleware from 'redux-thunk'
 import PromiseMiddleware from 'redux-promise'
 
@@ -19,11 +19,8 @@ const finalCreateStore = compose(
   )
 )(createStore)
 
-const reducer = combineReducers(Object.assign({}, rootReducer, {
-  routing: routerReducer
-}))
 
 export default function configureStore(initialState){
-  const store = finalCreateStore(reducer, initialState)
+  const store = finalCreateStore(rootReducer, initialState)
   return store
 }
