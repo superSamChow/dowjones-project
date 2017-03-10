@@ -1,13 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { hashHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-function App(){
-  return (
-    <h1>Hi, Dowjones!!</h1>
-  )
-}
+import routes from './routes'
+import configureStore from './redux/configureStore'
 
-ReactDOM.render(
-  <App />, 
-  document.getElementById('root')
-)
+const store = configureStore()
+const history = syncHistoryWithStore(hashHistory, store)
+
+ReactDOM.render((
+  <Provider store={store}>
+    {routes(history)}    
+  </Provider>
+), document.getElementById('root'))
