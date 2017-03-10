@@ -39,11 +39,15 @@ const config = {
       test: /\.json?$/,
       loader: 'json-loader'
     }, {
-      test: /\.css$/,
-      loader: 'style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]'
+      test: /\.s?css$/,
+      exclude: path.resolve(__dirname, 'client/src/styles'),
+      loader: 'style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss-loader!sass-loader?sourceMap=true'
+    }, {
+      test: /\.s?css$/,
+      exclude: path.resolve(__dirname, 'client/src/styles'),
+      loader: 'style-loader!css-loader!sass-loader?postcss-loader!sourceMap=true'
     }]
   }
-
 }
 
 module.exports = config
