@@ -11,35 +11,35 @@ dowjones share visualization project in react
 
 ## client目录简介
 
-  └── src
-    ├── app.js            ## 入口文件
-    ├── app.scss          ## 全局样式
-    ├── components        ## 展示型组件及其Redux
-    │   ├── Detail
-    │   └── Home
-    │       ├── PreviewList.js
-    │       └── PreviewListRedux.js
-    ├── containers        
-    ├── index.tpl.html    ## html模板文件
-    ├── layouts           ## 布局
-    │   └── Frame.js
-    ├── redux             ## 全局redux配置
-    │   ├── configureStore.js  ## store配置
-    │   ├── middleware         ## 自定义middleware
-    │   │   └── redux-composable-fetch.js   
-    │   └── reducers.js        ## 全局reducers
-    ├── routes                 ## 前端路由配置
-    │   └── index.js
-    ├── styles                 ## 局部样式（组件无关）
-    ├── utils                  ## 辅助
-    │   └── data_fetch.js
-    └── views                  ## 页面组件（容器型）及其redux配置
-        ├── Detail.js
-        ├── Detail.scss
-        ├── DetailRedux.js
-        ├── Home.js
-        ├── Home.scss
-        └── HomeRedux.js
+    └── src
+      ├── app.js            ## 入口文件
+      ├── app.scss          ## 全局样式
+      ├── components        ## 展示型组件及其Redux
+      │   ├── Detail
+      │   └── Home
+      │       ├── PreviewList.js
+      │       └── PreviewListRedux.js
+      ├── containers        
+      ├── index.tpl.html    ## html模板文件
+      ├── layouts           ## 布局
+      │   └── Frame.js
+      ├── redux             ## 全局redux配置
+      │   ├── configureStore.js  ## store配置
+      │   ├── middleware         ## 自定义middleware
+      │   │   └── redux-composable-fetch.js   
+      │   └── reducers.js        ## 全局reducers
+      ├── routes                 ## 前端路由配置
+      │   └── index.js
+      ├── styles                 ## 局部样式（组件无关）
+      ├── utils                  ## 辅助
+      │   └── data_fetch.js
+      └── views                  ## 页面组件（容器型）及其redux配置
+          ├── Detail.js
+          ├── Detail.scss
+          ├── DetailRedux.js
+          ├── Home.js
+          ├── Home.scss
+          └── HomeRedux.js
 
 
 ## 项目进展
