@@ -40,12 +40,18 @@ const config = {
       loader: 'json-loader'
     }, {
       test: /\.s?css$/,
-      exclude: path.resolve(__dirname, 'client/src/styles'),
-      loader: 'style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss-loader!sass-loader?sourceMap=true'
+      include: [
+        path.resolve(__dirname, 'client/src/components'),
+        path.resolve(__dirname, 'client/src/layouts')
+      ],
+      loader: 'style-loader!css-loader?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss-loader'
     }, {
       test: /\.s?css$/,
-      exclude: path.resolve(__dirname, 'client/src/styles'),
-      loader: 'style-loader!css-loader!sass-loader?postcss-loader!sourceMap=true'
+      exclude: [
+        path.resolve(__dirname, 'client/src/components'),
+        path.resolve(__dirname, 'client/src/layouts')
+      ],
+      loader: 'style-loader!css-loader!postcss-loader'
     }]
   }
 }

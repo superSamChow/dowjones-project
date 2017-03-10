@@ -43,6 +43,7 @@
     "webpack-hot-middleware": "^2.17.1"
   },
   "dependencies": {
+    "antd": "^2.8.0",
     "express": "^4.15.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -53,5 +54,8 @@
     "redux-composable-fetch": "^0.3.4",
     "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.3"
+  },
+  "theme": {
+    "primary-color": "#1088ae"
   }
 }
