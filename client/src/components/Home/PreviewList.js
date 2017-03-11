@@ -1,4 +1,6 @@
 import React, {Component, PropTypes} from 'react'
+import { Table, Spin, message } from 'antd'
+
 
 
 class PreviewList extends Component {
@@ -20,17 +22,44 @@ class PreviewList extends Component {
       dowjonesList
     } = this.props
 
+    const columns = [{
+      title: 'Ticker-Name',
+      dataIndex: 'ticker',
+      render: text => text.toUpperCase()
+    }, {
+      title: 'Company-Name',
+      dataIndex: 'Company-Name'
+    }, {
+      title: 'Exchange-Name',
+      dataIndex: 'Exchange-Name'
+    }, {
+      title: 'previous_close_price',
+      dataIndex: 'previous_close_price'
+    }, {
+      title: 'last_update',
+      render: () => '2017-3-10'
+    }]
+
+    let table = (
+      <Table 
+        columns={columns} 
+        dataSource={dowjonesList} 
+      />
+    )
+
     if (error) {
-      return <p>没有成功加载数据！</p>
+      message.error("加载数据错误！")
     }
 
     if (loading) {
-      return <p>数据加载中...</p>
+      return (
+        <Spin size="large" >
+          {table}
+        </Spin>
+      )
     }
 
-    return (
-      <div />
-    )
+    return table
   }
 }
 
