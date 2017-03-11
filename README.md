@@ -9,30 +9,30 @@ dowjones share visualization project in react
 
 生产模式： 暂无
 
-## client目录简介
+## client/src目录简介
 
-    └── src
-      ├── app.js            ## 入口文件
-      ├── app.scss          ## 全局样式
-      ├── components        ## 展示型组件及其Redux
+      .
+      ├── app.js                 ### 入口文件
+      ├── app.scss
+      ├── components             ## 展示型组件及其Redux
       │   ├── Detail
+      │   │   ├── DetailListRedux.js
+      │   │   └── Details.js
       │   └── Home
       │       ├── PreviewList.js
       │       └── PreviewListRedux.js
-      ├── containers        
-      ├── index.tpl.html    ## html模板文件
-      ├── layouts           ## 布局
+      ├── containers
+      ├── index.tpl.html         ## html模板文件
+      ├── layouts                ## 布局
       │   └── Frame.js
-      ├── redux             ## 全局redux配置
+      ├── redux                  ## 全局redux配置
       │   ├── configureStore.js  ## store配置
       │   ├── middleware         ## 自定义middleware
-      │   │   └── redux-composable-fetch.js   
       │   └── reducers.js        ## 全局reducers
       ├── routes                 ## 前端路由配置
       │   └── index.js
-      ├── styles                 ## 局部样式（组件无关）
-      ├── utils                  ## 辅助
-      │   └── data_fetch.js
+      ├── styles
+      ├── utils
       └── views                  ## 页面组件（容器型）及其redux配置
           ├── Detail.js
           ├── Detail.scss
@@ -40,6 +40,7 @@ dowjones share visualization project in react
           ├── Home.js
           ├── Home.scss
           └── HomeRedux.js
+
 
 
 ## 项目进展
@@ -69,3 +70,23 @@ dowjones share visualization project in react
   1. express是短板。
   2. yahoo的dowjones api怎么用啊？不能在这里使用jsonp这样的办法吧？
   3. sass-loader和antd一起使用有坑！目前暂时干掉了sass-loader。
+
+### 03/11
+
+#### fulfilled
+  1. 使用antd的table等组件，作为列表显示一部分股票数据。
+  2. 提出解决详细显示的路由问题的方案，并设计detail redux。
+  3. 大体研究了plottable的用法。
+
+#### unfulfilled
+  1. 没有实现解决后端路由以及后端请求数据的方案。
+
+#### tomorrow plans
+  1. 使用plottable可视化数据。
+  2. 封装可视化数据的组件。
+  3. 后端路由和api。
+
+#### 槽点
+  1. plottable没有我想要的可视化组件！思考半天的可视化方案无法使用plottable实现，悲剧！😢 今后工欲善其事必先利其器。工欲做其事，必先了解器。
+  2. 感觉三天之内要做不完了……
+  3. 无法找到一段时间专心连续开发，效率提不上去。
