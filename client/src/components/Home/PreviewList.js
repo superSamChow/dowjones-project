@@ -38,8 +38,8 @@ class PreviewList extends Component {
   }
 
   handleSelectChange = (selectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys);
-    this.setState({ selectedRowKeys });
+    console.log('selectedRowKeys changed: ', selectedRowKeys)
+    this.setState({ selectedRowKeys })
   }
 
   handleClick = (e) => {
@@ -51,9 +51,6 @@ class PreviewList extends Component {
     const items = selectedRowKeys.join('&')
 
     push(`/detail?${items}`)
-
-    this.setState({selectedRowKeys: []})
-
   }
 
   render(){
@@ -70,7 +67,7 @@ class PreviewList extends Component {
       onChange: this.handleSelectChange,
     };
 
-    const hasSelected = selectedRowKeys.length > 0;
+    const hasSelected = selectedRowKeys.length > 0
 
     let table = (
       <Table 

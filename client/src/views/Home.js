@@ -3,6 +3,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 
+import { Breadcrumb } from 'antd'
+const BreadItem = Breadcrumb.Item
+
 import { listActions } from './HomeRedux'
 import PreviewList from '../components/Home/PreviewList'
 
@@ -21,6 +24,9 @@ class Home extends Component {
 
     return (
       <div className="home">
+        <Breadcrumb style={{ marginBottom:'16px' }}>
+          <BreadItem>Home</BreadItem>
+        </Breadcrumb>
         <PreviewList
           {...list}
           {...listActions}
