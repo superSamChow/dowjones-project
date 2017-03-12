@@ -1,3 +1,5 @@
+import { mock } from './mock' 
+
 const STATIC_START_TIME = new Date('2016-3-10')
 const STATIC_END_TIME = new Date('2017-3-9')
 
@@ -47,7 +49,7 @@ function detailList(state = initialState, action){
       ...state,
       loading: false,
       error: false,
-      selectedDowjones: []
+      selectedDowjones: mock
       //selectedDowjones: action.payload.dowjonesDetails
     }
   case LOAD_DOWJONES_DETAIL_ERROR:

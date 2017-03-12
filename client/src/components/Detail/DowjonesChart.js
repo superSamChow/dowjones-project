@@ -1,8 +1,14 @@
 import React, { Component, PropTypes } from 'react'
-import Plottable from 'plottable'
 import { Spin, message } from 'antd'
 
-import { createChart } from '../../utils/chart'
+import { 
+  dataToSeries,
+  addDataset, 
+  createChart,
+  appendCrosshair,
+  sparkline, 
+  plot 
+} from '../../utils/chart'
 
 class DowjonesChart extends Component {
   static proptypes = {
@@ -15,7 +21,7 @@ class DowjonesChart extends Component {
     loadDowjonesDetail: PropTypes.func
   }
 
-  chart = createChart()
+  chart = createChart(plot, sparkline)
 
   componentDidMount(){
     const { 
@@ -23,24 +29,32 @@ class DowjonesChart extends Component {
       loadDowjonesDetail
     } = this.props
     const items = search.trim().slice(1).split('&')
-
     loadDowjonesDetail(items)
+
+    this.chart.renderTo('#chart')
   }
 
   componentWillReceiveProps(props){
-    const { loading } = props
+    const {
+      loading,
+      selectedDowjones,
+      startTime,
+      endTime
+    } = props
+
     if (!loading) {
-      this.chart.renderTo('#chart')
+      const series = selectedDowjones.map(e=>
+        dataToSeries(e, startTime, endTime)
+      )
+      addDataset(series, plot, sparkline)
+      appendCrosshair(plot)
     }
   }
 
   render(){
     const {
       loading,
-      error,
-      selectedDowjones,
-      startTime,
-      endTime
+      error
     } = this.props
 
     const svg = <svg id='chart' />
@@ -53,11 +67,11 @@ class DowjonesChart extends Component {
     )
 
     if (error){
-      message.error("加载数据错误！")
+      message.error('加载数据错误！')
     }
 
     return (
-      <div>
+      <div style={{ width: '80%', height: '500px', margin: '20px auto' }}>
         {
           loading? spin: ''
         }
