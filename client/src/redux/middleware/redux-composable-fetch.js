@@ -1,6 +1,6 @@
 const fetchMiddleware = store => next => action => {
-  
-  if (!action.url || !Array.isArray(action.types)) {
+
+  if (!(action.url || action.urls) || !Array.isArray(action.types)) {
     return next(action)
   }
 
@@ -12,21 +12,41 @@ const fetchMiddleware = store => next => action => {
     ...action
   })
 
-  fetch(action.url, {params: action.params})
-    .then(result => result.json().then(result => {
+
+  if (action.urls) {
+    Promise.all(action.urls.map(e => fetch(e)))
+      .then(result => {
+        Promise.all(result.map(e=>e.json()))
+          .then(result => {
+            next({
+              type: SUCCESS,
+              loading: false,
+              payload: result
+            })
+          })
+      }).catch(err => {
+        next({
+          type: ERROR,
+          loading: false,
+          err: err
+        })
+      })
+
+  } else if (action.url) {
+    fetch(action.url).then(result => result.json().then(result => {
       next({
         type: SUCCESS,
         loading: false,
         payload: result
       })
-    }))
-    .catch(err => {
+    })).catch(err => {
       next({
         type: ERROR,
         loading: false,
         err: err
       })
     })
+  }
 }
 
 export default fetchMiddleware
