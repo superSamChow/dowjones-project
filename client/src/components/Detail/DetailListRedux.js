@@ -17,10 +17,10 @@ const LOAD_DOWJONES_DETAIL_ERROR = 'LOAD_DOWJONES_DETAIL_ERROR'
 const SET_TIME_RANGE = 'SET_TIME_RANGE'
 
 export function loadDowjonesDetail(items){
-  const query = items.join('&')
+  const urls = items.map(e => (`api/dowjones/${e}.json`))
   return {
     types: [LOAD_DOWJONES_DETAIL, LOAD_DOWJONES_DETAIL_SUCCESS, LOAD_DOWJONES_DETAIL_ERROR],
-    url: `api/detail?items=${query}`
+    urls
   }
 }
 
@@ -49,8 +49,7 @@ function detailList(state = initialState, action){
       ...state,
       loading: false,
       error: false,
-      selectedDowjones: mock
-      //selectedDowjones: action.payload.dowjonesDetails
+      selectedDowjones: [].concat(action.payload)
     }
   case LOAD_DOWJONES_DETAIL_ERROR:
     return {
