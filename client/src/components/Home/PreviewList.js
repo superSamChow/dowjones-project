@@ -38,7 +38,6 @@ class PreviewList extends Component {
   }
 
   handleSelectChange = (selectedRowKeys) => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys)
     this.setState({ selectedRowKeys })
   }
 

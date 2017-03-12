@@ -13,13 +13,13 @@ const fetchMiddleware = store => next => action => {
   })
 
   fetch(action.url, {params: action.params})
-    .then(result => {
+    .then(result => result.json().then(result => {
       next({
         type: SUCCESS,
         loading: false,
         payload: result
       })
-    })
+    }))
     .catch(err => {
       next({
         type: ERROR,

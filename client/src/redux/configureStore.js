@@ -5,16 +5,18 @@ import ThunkMiddleware from 'redux-thunk'
 import PromiseMiddleware from 'redux-promise'
 
 import rootReducer from './reducers'
-import createFetchMiddleware from 'redux-composable-fetch'
+import FetchMiddleware from './middleware/redux-composable-fetch'
+//import createFetchMiddleware from 'redux-composable-fetch'
 
 // 创建多异步middleware
-const FetchMiddleware = createFetchMiddleware()
+// const FetchMiddleware = createFetchMiddleware()
 
 const finalCreateStore = compose(
   applyMiddleware(
     ThunkMiddleware,
     PromiseMiddleware,
     FetchMiddleware,
+
     routerMiddleware(hashHistory)
   )
 )(createStore)

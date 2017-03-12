@@ -21,13 +21,15 @@ if (isDeveloping) {
 
   app.use(middleware)
   app.use(webpackHotMiddleware(compiler))
-  app.get('*', function response(req, res) {
+  app.use('/api', express.static('api'))
+  app.get('/', function response(req, res) {
     res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'client/dist/index.html')))
     res.end()
   })
 } else {
   app.use(express.static(__dirname + 'client/dist'))
-  app.get('*', function response(req, res) {
+  app.use('/api', express.static('api'))
+  app.get('/', function response(req, res) {
     res.sendFile(path.join(__dirname, 'client/dist/index.html'))
   })
 }
