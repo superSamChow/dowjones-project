@@ -90,3 +90,8 @@ dowjones share visualization project in react
   1. plottable没有我想要的可视化组件！思考半天的可视化方案无法使用plottable实现，悲剧！😢 今后工欲善其事必先利其器。工欲做其事，必先了解器。
   2. 感觉三天之内要做不完了……
   3. 无法找到一段时间专心连续开发，效率提不上去。
+
+### 03/12
+
+#### 槽点
+  1. plottable npm版本和api版本不匹配！想按照官方example练习的话，需要降级到3.0.0beta 1版本，同时在index.html中引入其样式文件

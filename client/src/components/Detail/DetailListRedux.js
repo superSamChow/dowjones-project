@@ -47,7 +47,8 @@ function detailList(state = initialState, action){
       ...state,
       loading: false,
       error: false,
-      selectedDowjones: action.payload.dowjonesDetails
+      selectedDowjones: []
+      //selectedDowjones: action.payload.dowjonesDetails
     }
   case LOAD_DOWJONES_DETAIL_ERROR:
     return {

@@ -44,7 +44,9 @@
   },
   "dependencies": {
     "antd": "^2.8.0",
+    "d3": "^4.7.2",
     "express": "^4.15.2",
+    "plottable": "^3.0.0-beta.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",

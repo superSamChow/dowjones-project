@@ -7,6 +7,8 @@ import { Breadcrumb } from 'antd'
 const BreadItem = Breadcrumb.Item
 
 import { listActions } from './DetailRedux'
+import DateRange from '../components/Detail/DateRange'
+import DowjonesChart from '../components/Detail/DowjonesChart'
 
 class Detail extends Component {
   static propTypes = {
@@ -28,6 +30,16 @@ class Detail extends Component {
           <BreadItem><a href="/">Home</a></BreadItem>
           <BreadItem>Detail</BreadItem>
         </Breadcrumb>
+        <DateRange 
+          startTime={ list.startTime }
+          endTime={ list.endTime }
+          setTimeRanges={ listActions.setTimeRanges }
+        />
+        <DowjonesChart
+          { ...list }
+          loadDowjonesDetail={ listActions.loadDowjonesDetail }
+          search={ location.search }
+        />
       </div>
     )
   }
