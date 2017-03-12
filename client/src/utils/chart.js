@@ -1,8 +1,8 @@
 import Plottable from 'plottable'
 import * as d3 from 'd3'
 
-export const sparkline = new Plottable.Plots.Line()
-export const plot = new Plottable.Plots.Line()
+export let sparkline = new Plottable.Plots.Line()
+export let plot = new Plottable.Plots.Line()
 
 // 将每一个股票数据转成series
 export function dataToSeries(data, startTime, endTime){
@@ -28,6 +28,10 @@ export function dataToSeries(data, startTime, endTime){
 
 // 将不同股票的数据加入坐标系中
 export function addDataset(series, plot, sparkline){
+  // 先清空
+  plot.datasets([])
+  sparkline.datasets([])
+  
   series.forEach((e)=>{
     plot.addDataset(e)
     sparkline.addDataset(e)

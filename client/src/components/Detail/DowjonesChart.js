@@ -42,8 +42,10 @@ class DowjonesChart extends Component {
       endTime
     } = props
 
+    console.log(startTime)
+
     if (!loading) {
-      const series = selectedDowjones.map(e=>
+      let series = selectedDowjones.map(e=>
         dataToSeries(e, startTime, endTime)
       )
       addDataset(series, plot, sparkline)
@@ -71,7 +73,7 @@ class DowjonesChart extends Component {
     }
 
     return (
-      <div style={{ width: '80%', height: '500px', margin: '20px auto' }}>
+      <div style={{ width: '80%', height: '600px', margin: '20px auto' }}>
         {
           loading? spin: ''
         }

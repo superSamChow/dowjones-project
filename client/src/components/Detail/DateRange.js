@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { DatePicker } from 'antd'
+import moment from 'moment'
 
 const { RangePicker } = DatePicker
-
 
 class DataRange extends Component {
   static propTypes = {
@@ -13,14 +13,23 @@ class DataRange extends Component {
 
   handleChange = (date, dateStr)=> {
     const { setTimeRanges } = this.props
-    setTimeRanges(date[0], date[1])
+
+    setTimeRanges(date.map(e=>e.toDate()))
   }
 
   render(){
+    const { startTime, endTime } = this.props
+
+    const dateFormat = 'YYYY/MM/DD'
+    const start = moment(startTime, dateFormat)
+    const end = moment(endTime, dateFormat)
+
     return (
       <RangePicker
         style={{ marginBottom:'16px' }}
-        onChanege= { this.handleChange }
+        defaultValue={[start, end]}
+        onChange= { this.handleChange }
+        format={dateFormat}
       />
     )
   }
